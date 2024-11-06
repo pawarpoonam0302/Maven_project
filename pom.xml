@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.demo.nec</groupId>
+    <artifactId>Company_App</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>HR_Module</module>
+        <module>Finance_Module</module>
+        <module>Common_Module</module>
+        <module>IT_Module</module>
+    </modules>
+
+    <dependencies>
+        <!-- MySQL Connector/J JDBC Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.5.2</version>
+        </dependency>
+    </dependencies>
+
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/comapany_db</db.url>
+                <db.username>root</db.username>
+                <db.password>Poonam@2910</db.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>Test</id>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/test_db</db.url>
+                <db.username>root</db.username>
+                <db.password>Poonam@2910</db.password>
+            </properties>
+        </profile>
+
+
+        <profile>
+            <id>Prod</id>
+            <properties>
+                <db.url>jdbc:mysql://localhost:3306/test_db</db.url>
+                <db.username>root</db.username>
+                <db.password>Poonam@2910</db.password>
+                <maven.test.skip>true</maven.test.skip>
+            </properties>
+        </profile>
+    </profiles>
+
+
+
+</project>
